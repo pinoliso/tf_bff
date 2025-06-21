@@ -13,12 +13,20 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // http
+        //     .authorizeHttpRequests(auth -> auth
+        //         .requestMatchers("/api/users/**").authenticated()
+        //         .anyRequest().permitAll()
+        //     )
+        //     .oauth2Login(Customizer.withDefaults())
+        //     .oauth2ResourceServer(oauth2 -> oauth2
+        //         .jwt(Customizer.withDefaults())
+        //     );
+
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/users/**").authenticated()
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
             )
-            .oauth2Login(Customizer.withDefaults())
             .oauth2ResourceServer(oauth2 -> oauth2
                 .jwt(Customizer.withDefaults())
             );
