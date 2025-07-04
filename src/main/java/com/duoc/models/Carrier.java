@@ -18,15 +18,34 @@ public class Carrier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
-    private String rut;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status_id", nullable = false)
+    @JoinColumn(name = "carrier_status_id", nullable = false)
     private CarrierStatus status;
+
+    @Column(nullable = false)
+    private String carrier;
+
+    @Column(nullable = false)
+    private String destiny;
+
+    @Column(nullable = false)
+    private String driver;
+
+    @Column(nullable = false)
+    private String patent;
+
+    @Column(name = "departure_time", nullable = false)
+    private LocalDateTime departureTime;
+
+    @Column(name = "arrival_time", nullable = false)
+    private LocalDateTime arrivalTime;
+
+    @Column(name = "tracking_number", nullable = false)
+    private String trackingNumber;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
@@ -35,4 +54,5 @@ public class Carrier {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
 }
