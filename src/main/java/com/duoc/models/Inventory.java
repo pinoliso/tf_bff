@@ -37,6 +37,10 @@ public class Inventory {
     @JoinColumn(name = "inventory_status_id", nullable = false)
     private InventoryStatus inventoryStatus;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "carrier_id", nullable = false)
+    private Carrier carrier;
+
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InventoryItem> items = new ArrayList<>();
 

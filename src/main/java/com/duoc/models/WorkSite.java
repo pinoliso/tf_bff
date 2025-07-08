@@ -26,15 +26,15 @@ public class WorkSite {
     private String notes;
 
     // Relaciones
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "work_site_type_id", nullable = false)
     private WorkSiteType workSiteType;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "work_site_status_id", nullable = false)
     private WorkSiteStatus workSiteStatus;
 

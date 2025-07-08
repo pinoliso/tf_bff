@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,12 +21,13 @@ public class InventoryItem {
     private Long id;
 
     // Relación con Inventory
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "inventory_id", nullable = false)
+    @JsonIgnore
     private Inventory inventory;
 
     // Relación con Item
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
 
@@ -32,7 +35,7 @@ public class InventoryItem {
     private Integer quantity;
 
     // Relación con InventoryStatus
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "inventory_status_id", nullable = false)
     private InventoryStatus inventoryStatus;
 

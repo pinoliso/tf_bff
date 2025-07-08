@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import com.duoc.models.Inventory;
 import com.duoc.services.InventoryService;
@@ -39,8 +41,9 @@ public class InventoryController {
 
     // Crear nuevo inventario
     @PostMapping
-    public ResponseEntity<Inventory> createInventory(@RequestBody Inventory inventory) {
-        Inventory created = inventoryService.save(inventory);
+    public ResponseEntity<Inventory> createInventory(@RequestBody Inventory inventory, @AuthenticationPrincipal Jwt jwt) {
+        String email = jwt.getClaimAsString("email");
+        Inventory created = inventoryService.saveWithUserWithItems(inventory, email);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
