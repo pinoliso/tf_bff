@@ -13,8 +13,15 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import com.duoc.models.User;
+import org.springframework.beans.factory.annotation.Value;
 
 public class AzureB2CService {
+
+    @Value("${B2C_CLIENT}")
+    private String b2cClientId;
+
+    @Value("${B2C_SECRET}")
+    private String b2cClientSecret;
 
     public String getAzureB2CToken() {
         String url = "https://login.microsoftonline.com/54b64703-5cae-45cf-8852-ee61cb6d25f8/oauth2/v2.0/token";
@@ -22,9 +29,9 @@ public class AzureB2CService {
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-        map.add("client_id", "89954608-cf12-4719-8792-5468ad42cbfd");
+        map.add("client_id", b2cClientId);
         map.add("scope", "https://graph.microsoft.com/.default");
-        map.add("client_secret", "LZI8Q~RJmbuuv4~MPo4hAHHhAGhgj4666XsQHddi");
+        map.add("client_secret", b2cClientSecret);
         map.add("grant_type", "client_credentials");
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
