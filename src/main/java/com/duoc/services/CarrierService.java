@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.duoc.models.Carrier;
+import com.duoc.models.CarrierItem;
+import com.duoc.models.Inventory;
+import com.duoc.models.InventoryItem;
 import com.duoc.models.User;
 import com.duoc.repositories.CarrierRepository;
 import com.duoc.repositories.UserRepository;
@@ -33,6 +36,11 @@ public class CarrierService {
     public Carrier saveWithUser(Carrier carrier, String sub) {
         User user = userRepository.findByB2cSub(sub).get();
         carrier.setUser(user);
+        if (carrier.getItems() != null) {
+            for (CarrierItem item : carrier.getItems()) {
+                item.setCarrier(carrier);
+            }
+        }
         return repository.save(carrier); 
     }
 }

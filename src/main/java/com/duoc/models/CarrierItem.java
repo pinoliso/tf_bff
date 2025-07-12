@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -20,11 +22,18 @@ public class CarrierItem {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "carrier_id", nullable = false)
+    @JsonIgnore
     private Carrier carrier;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
+
+    @Column(nullable = false)
+    private Integer quantity;
+
+    @Column(name = "unit", nullable = false)
+    private String unit;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)

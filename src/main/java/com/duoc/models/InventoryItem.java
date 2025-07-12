@@ -20,13 +20,11 @@ public class InventoryItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Relación con Inventory
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "inventory_id", nullable = false)
     @JsonIgnore
     private Inventory inventory;
 
-    // Relación con Item
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
@@ -34,7 +32,9 @@ public class InventoryItem {
     @Column(nullable = false)
     private Integer quantity;
 
-    // Relación con InventoryStatus
+    @Column(nullable = false)
+    private String unit;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "inventory_status_id", nullable = false)
     private InventoryStatus inventoryStatus;

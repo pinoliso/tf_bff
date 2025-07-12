@@ -6,6 +6,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "carriers")
@@ -25,6 +27,9 @@ public class Carrier {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "carrier_status_id", nullable = false)
     private CarrierStatus status;
+
+    @OneToMany(mappedBy = "carrier", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CarrierItem> items = new ArrayList<>();
 
     @Column(nullable = false)
     private String carrier;
