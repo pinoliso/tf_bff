@@ -42,8 +42,8 @@ public class InventoryController {
     // Crear nuevo inventario
     @PostMapping
     public ResponseEntity<Inventory> createInventory(@RequestBody Inventory inventory, @AuthenticationPrincipal Jwt jwt) {
-        String email = jwt.getClaimAsString("email");
-        Inventory created = inventoryService.saveWithUserWithItems(inventory, email);
+        String sub = jwt.getClaimAsString("sub");
+        Inventory created = inventoryService.saveWithUserWithItems(inventory, sub);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 

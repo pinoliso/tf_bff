@@ -19,7 +19,7 @@ public class InventoryImage {
     private Long id;
 
     // Relación ManyToOne con Inventory
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "inventory_id", nullable = false)
     private Inventory inventory;
 

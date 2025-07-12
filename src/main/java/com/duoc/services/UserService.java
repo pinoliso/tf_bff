@@ -28,6 +28,13 @@ public class UserService {
     }
 
     public User save(User user) {
+
+        AzureB2CService azureB2CService = new AzureB2CService();
+        String token = azureB2CService.getAzureB2CToken();
+        String b2cId = azureB2CService.registerB2CUser(user, token);
+
+        user.setB2cSub(b2cId);
+
         return userRepository.save(user);
     }
 

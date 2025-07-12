@@ -41,8 +41,7 @@ public class InventoryService {
     }
 
     public Inventory saveWithUserWithItems(Inventory inventory, String sub) {
-        User user = new User();
-        user.setId(1L);
+        User user = userRepository.findByB2cSub(sub).get();
         inventory.setUser(user);
         for (InventoryItem item : inventory.getItems()) {
             item.setInventory(inventory); 
