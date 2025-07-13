@@ -22,13 +22,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Listar todos los usuarios
     @GetMapping
     public List<User> getAllUsers() {
         return userService.findAll();
     }
 
-    // Buscar usuario por ID
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         Optional<User> user = userService.findById(id);
@@ -37,19 +35,18 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Crear un nuevo usuario
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        User created = userService.save(user);
+        User created = userService.newUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-    // Actualizar usuario existente
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         Optional<User> existing = userService.findById(id);
         if (existing.isPresent()) {
             user.setId(id);
+            user.setB2cSub(existing.get().getB2cSub());
             User updated = userService.save(user);
             return ResponseEntity.ok(updated);
         } else {
@@ -57,7 +54,6 @@ public class UserController {
         }
     }
 
-    // Eliminar usuario por ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         Optional<User> existing = userService.findById(id);

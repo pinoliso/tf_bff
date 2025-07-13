@@ -28,6 +28,10 @@ public class UserService {
     }
 
     public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    public User newUser(User user) {
 
         AzureB2CService azureB2CService = new AzureB2CService();
         String token = azureB2CService.getAzureB2CToken();
