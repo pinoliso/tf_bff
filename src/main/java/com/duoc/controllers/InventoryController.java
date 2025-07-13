@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import com.duoc.models.Inventory;
+import com.duoc.models.InventoryStatus;
 import com.duoc.services.InventoryService;
 
 import java.util.List;
@@ -67,6 +68,20 @@ public class InventoryController {
         if (existing.isPresent()) {
             inventoryService.deleteById(id);
             return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PatchMapping("/{id}/status/{status}")
+    public ResponseEntity<Inventory> updateInventoryStatus(@PathVariable Long id, @PathVariable Long status) {
+        Optional<Inventory> existing = inventoryService.findById(id);
+        if (existing.isPresent()) {
+            Inventory inv = existing.get();
+            inv.setId(id);
+            inv.setInventoryStatus(new InventoryStatus(status));
+            Inventory updated = inventoryService.save(inv);
+            return ResponseEntity.ok(updated);
         } else {
             return ResponseEntity.notFound().build();
         }
