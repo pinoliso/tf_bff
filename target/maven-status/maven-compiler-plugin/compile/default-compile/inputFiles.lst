@@ -1,11 +1,13 @@
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\repositories\InventoryStatusRepository.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\repositories\ItemRepository.java
+C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\controllers\OpenAIController.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\repositories\WorkSiteRepository.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\models\Carrier.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\services\UserService.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\models\WorkSiteStatus.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\repositories\UserRepository.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\models\WorkSite.java
+C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\services\AzureOpenAIService.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\repositories\InventoryRepository.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\services\WorkSiteTypeService.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\controllers\CarrierController.java
@@ -14,6 +16,7 @@ C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\services\ItemServi
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\services\CarrierStatusService.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\services\InventoryStatusService.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\repositories\CarrierStatusRepository.java
+C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\controllers\AzureOpenAIService.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\services\WorkSiteStatusService.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\models\Item.java
 C:\Users\Gamer\Desktop\duoc\tf\bff\bff\src\main\java\com\duoc\services\CarrierItemService.java
