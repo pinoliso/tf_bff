@@ -1,5 +1,6 @@
 package com.duoc.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import com.duoc.services.AzureOpenAIService;
 @RequestMapping("/api/openai")
 public class OpenAIController {
 
+    @Autowired
     private final AzureOpenAIService azureOpenAIService;
 
     public OpenAIController(AzureOpenAIService azureOpenAIService) {
