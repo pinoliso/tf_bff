@@ -31,6 +31,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public Optional<User> findByB2cSub(String b2cSub) {
+        return userRepository.findByB2cSub(b2cSub);
+    }
+
     public User newUser(User user) {
 
         AzureB2CService azureB2CService = new AzureB2CService();
