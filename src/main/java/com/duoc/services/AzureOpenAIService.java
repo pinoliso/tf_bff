@@ -36,23 +36,18 @@ public class AzureOpenAIService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    @Autowired
-    private final ItemRepository itemRepository;
 
-    public AzureOpenAIService(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
-    }
 
     public String contarBotellas(MultipartFile file) throws Exception {
         // Leer la imagen recibida y convertir a base64
         byte[] imageBytes = file.getBytes();
         String encodedImage = Base64.getEncoder().encodeToString(imageBytes);
-
-        List<Item> items = itemRepository.findAll();
+        // ItemService itemService = new ItemService();
+        // List<Item> items = itemService.findAll();
         String itemListString = ""; 
-        for (Item item : items) {
-            itemListString += item.getReference() + ", ";
-        }
+        // for (Item item : items) {
+        //     itemListString += item.getReference() + ", ";
+        // }
         
         List<Map<String, Object>> messages = new ArrayList<>();
         Map<String, Object> systemMsg = new HashMap<>();
