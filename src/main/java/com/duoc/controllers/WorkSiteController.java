@@ -3,6 +3,8 @@ package com.duoc.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import com.duoc.models.WorkSite;
@@ -36,8 +38,9 @@ public class WorkSiteController {
     }
 
     @PostMapping
-    public ResponseEntity<WorkSite> createWorkSite(@RequestBody WorkSite workSite) {
-        WorkSite created = workSiteService.save(workSite);
+    public ResponseEntity<WorkSite> createWorkSite(@RequestBody WorkSite workSite, @AuthenticationPrincipal Jwt jwt) {
+        String sub = jwt.getClaimAsString("sub");
+        WorkSite created = workSiteService.saveWithUser(workSite, sub);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
