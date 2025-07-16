@@ -48,7 +48,8 @@ public class WorkSiteController {
     public ResponseEntity<WorkSite> updateWorkSite(@PathVariable Long id, @RequestBody WorkSite workSite) {
         Optional<WorkSite> existing = workSiteService.findById(id);
         if (existing.isPresent()) {
-            workSite.setId(id); // asegúrate de setear el id
+            workSite.setId(id); 
+            workSite.setUser(existing.get().getUser());
             WorkSite updated = workSiteService.save(workSite);
             return ResponseEntity.ok(updated);
         } else {
