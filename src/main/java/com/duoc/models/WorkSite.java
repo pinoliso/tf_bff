@@ -25,6 +25,12 @@ public class WorkSite {
 
     private String notes;
 
+    private String environmentalManager;
+
+    private String totalWaste;
+
+    private String constructorCompany;
+
     // Relaciones
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
