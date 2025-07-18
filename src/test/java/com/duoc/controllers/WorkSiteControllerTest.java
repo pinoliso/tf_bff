@@ -25,7 +25,7 @@ class WorkSiteControllerTest {
     private WorkSiteService workSiteService;
 
     @MockBean
-    private UserService userService; // Si tu controller usa otros servicios
+    private UserService userService;
 
     @Test
     void testCreateWorkSite() throws Exception {

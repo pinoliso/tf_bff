@@ -31,7 +31,6 @@ class UserControllerTest {
         user.setEmail("test@email.com");
         user.setB2cSub("sub123");
 
-        // Simula el comportamiento del service
         when(userService.save(any(User.class))).thenReturn(user);
 
         mockMvc.perform(post("/api/users")

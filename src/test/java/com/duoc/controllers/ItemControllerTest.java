@@ -56,6 +56,5 @@ class ItemControllerTest {
             .andExpect(jsonPath("$.name").value("Botella Plástica"));
     }
 
-    // Puedes agregar tests para update, delete y listar todos
 }
 

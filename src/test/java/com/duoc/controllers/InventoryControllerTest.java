@@ -61,7 +61,6 @@ class InventoryControllerTest {
             .andExpect(jsonPath("$.name").value("Inventario Prueba"));
     }
 
-    // Puedes agregar tests para update y delete según tus endpoints
 
 }
 
