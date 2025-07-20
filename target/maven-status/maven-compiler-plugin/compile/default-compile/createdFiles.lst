@@ -1,6 +1,7 @@
 com\duoc\repositories\ItemRepository.class
 com\duoc\models\InventoryImage.class
 com\duoc\models\WorkSiteStatus.class
+com\duoc\controllers\InventoryController.class
 com\duoc\repositories\CarrierItemRepository.class
 com\duoc\services\CarrierService.class
 com\duoc\repositories\UserRepository.class
@@ -31,6 +32,7 @@ com\duoc\services\ItemService.class
 com\duoc\controllers\UserController.class
 com\duoc\controllers\WorkSiteController.class
 com\duoc\models\CarrierStatus.class
+com\duoc\services\AzureB2CService.class
 com\duoc\services\InventoryStatusService.class
 com\duoc\repositories\InventoryStatusRepository.class
 com\duoc\models\Inventory.class

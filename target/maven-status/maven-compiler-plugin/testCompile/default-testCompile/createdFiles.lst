@@ -1,0 +1,13 @@
+com\duoc\Services\CarrierServiceTest.class
+com\duoc\controllers\WorkSiteControllerTest.class
+com\duoc\repositories\WorkSiteRepositoryTest.class
+com\duoc\Services\UserServiceTest.class
+com\duoc\controllers\CarrierControllerTest.class
+com\duoc\repositories\CarrierItemRepositoryTest.class
+com\duoc\controllers\UserControllerTest.class
+com\duoc\controllers\InventoryControllerTest.class
+com\duoc\repositories\CarrierRepositoryTest.class
+com\duoc\config\TestSecurityConfig.class
+com\duoc\controllers\ItemControllerTest.class
+com\duoc\repositories\UserRepositoryTest.class
+com\duoc\Services\WorkSiteServiceTest.class

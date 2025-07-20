@@ -19,13 +19,10 @@ public class WorkSiteRepositoryTest {
 
     @Autowired
     private WorkSiteRepository workSiteRepository;
-
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private WorkSiteStatusRepository workSiteStatusRepository;
-
     @Autowired
     private WorkSiteTypeRepository workSiteTypeRepository;
 
@@ -33,9 +30,10 @@ public class WorkSiteRepositoryTest {
     @DisplayName("Guardar y buscar WorkSite")
     void testSaveAndFindWorkSite() {
         User user = new User();
-        user.setEmail("admin@correo.com");
-        user.setName("Admin");   // IMPORTANTE
+        user.setName("Admin");
+        user.setEmail("admin@email.com");
         user.setB2cSub("sub-admin");
+        user.setRole("ADMIN");
         user.setPassword("admin");
         user.setUsername("admin");
         user = userRepository.save(user);
@@ -63,8 +61,28 @@ public class WorkSiteRepositoryTest {
     @Test
     @DisplayName("Eliminar WorkSite")
     void testDeleteWorkSite() {
+        User user = new User();
+        user.setName("Admin");
+        user.setEmail("admin@email.com");
+        user.setB2cSub("sub-admin");
+        user.setRole("ADMIN");
+        user.setPassword("admin");
+        user.setUsername("admin");
+        user = userRepository.save(user);
+        
+        WorkSiteStatus status = new WorkSiteStatus();
+        status.setName("Activo");
+        status = workSiteStatusRepository.save(status);
+
+        WorkSiteType type = new WorkSiteType();
+        type.setName("Tipo 1");
+        type = workSiteTypeRepository.save(type);
+
         WorkSite site = new WorkSite();
-        site.setName("Eliminar");
+        site.setName("Sitio 123");
+        site.setUser(user);
+        site.setWorkSiteStatus(status);
+        site.setWorkSiteType(type);
         site = workSiteRepository.save(site);
 
         workSiteRepository.deleteById(site.getId());

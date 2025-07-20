@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.duoc.models.Carrier;
 import com.duoc.models.CarrierItem;
-import com.duoc.models.Inventory;
-import com.duoc.models.InventoryItem;
 import com.duoc.models.User;
 import com.duoc.repositories.CarrierItemRepository;
 import com.duoc.repositories.CarrierRepository;

@@ -51,7 +51,6 @@ public class UserService {
     }
 
     public User findByEmail(String string) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByEmail'");
+        return userRepository.findByEmail(string).get();
     }
 }

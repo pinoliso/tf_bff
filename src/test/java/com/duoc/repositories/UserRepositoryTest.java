@@ -20,34 +20,46 @@ public class UserRepositoryTest {
     @DisplayName("Guardar y buscar usuario por email")
     void testSaveAndFindByEmail() {
         User user = new User();
-        user.setEmail("prueba@correo.com");
-        user.setB2cSub("sub-test-123");
-        userRepository.save(user);
+        user.setName("Admin");
+        user.setEmail("admin@email.com");
+        user.setB2cSub("sub-admin");
+        user.setRole("ADMIN");
+        user.setPassword("admin");
+        user.setUsername("admin");
+        user = userRepository.save(user);
 
-        Optional<User> found = userRepository.findByEmail("prueba@correo.com");
+        Optional<User> found = userRepository.findByEmail("admin@email.com");
         assertThat(found.get()).isNotNull();
-        assertThat(found.get().getB2cSub()).isEqualTo("sub-test-123");
+        assertThat(found.get().getB2cSub()).isEqualTo("sub-admin");
     }
 
     @Test
     @DisplayName("Guardar y buscar usuario por sub")
     void testSaveAndFindBySub() {
         User user = new User();
-        user.setEmail("otro@correo.com");
-        user.setB2cSub("sub-otro-456");
-        userRepository.save(user);
+        user.setName("Admin");
+        user.setEmail("admin@email.com");
+        user.setB2cSub("sub-admin");
+        user.setRole("ADMIN");
+        user.setPassword("admin");
+        user.setUsername("admin");
+        user = userRepository.save(user);
 
-        Optional<User> found = userRepository.findByB2cSub("sub-otro-456");
+        Optional<User> found = userRepository.findByB2cSub("sub-admin");
         assertThat(found.get()).isNotNull();
-        assertThat(found.get().getEmail()).isEqualTo("otro@correo.com");
+        assertThat(found.get().getEmail()).isEqualTo("admin@email.com");
     }
 
     @Test
     @DisplayName("Eliminar usuario")
     void testDeleteUser() {
         User user = new User();
-        user.setEmail("eliminar@correo.com");
-        user.setB2cSub("sub-delete-789");
+        user.setName("Admin");
+        user.setEmail("admin@email.com");
+        user.setB2cSub("sub-admin");
+        user.setRole("ADMIN");
+        user.setPassword("admin");
+        user.setUsername("admin");
         user = userRepository.save(user);
 
         userRepository.deleteById(user.getId());

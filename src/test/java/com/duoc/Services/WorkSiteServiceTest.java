@@ -7,6 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.duoc.models.User;
 import com.duoc.models.WorkSite;
+import com.duoc.models.WorkSiteStatus;
+import com.duoc.models.WorkSiteType;
+import com.duoc.repositories.WorkSiteStatusRepository;
+import com.duoc.repositories.WorkSiteTypeRepository;
 import com.duoc.services.UserService;
 import com.duoc.services.WorkSiteService;
 
@@ -22,6 +26,10 @@ class WorkSiteServiceTest {
     private WorkSiteService workSiteService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private WorkSiteStatusRepository workSiteStatusRepository;
+    @Autowired
+    private WorkSiteTypeRepository workSiteTypeRepository;
 
     @Test
     void testCreateWorkSite() {
@@ -29,15 +37,28 @@ class WorkSiteServiceTest {
         user.setName("Admin");
         user.setEmail("admin@email.com");
         user.setB2cSub("sub-admin");
+        user.setRole("ADMIN");
+        user.setPassword("admin");
+        user.setUsername("admin");
         user = userService.save(user);
 
-        WorkSite ws = new WorkSite();
-        ws.setUser(user);
-        ws.setName("Sitio Prueba");
+        WorkSiteStatus status = new WorkSiteStatus();
+        status.setName("Inactivo");
+        status = workSiteStatusRepository.save(status);
 
-        WorkSite saved = workSiteService.save(ws);
+        WorkSiteType type = new WorkSiteType();
+        type.setName("Tipo 2");
+        type = workSiteTypeRepository.save(type);
+
+        WorkSite site = new WorkSite();
+        site.setName("Sitio Prueba 2");
+        site.setUser(user);
+        site.setWorkSiteStatus(status);
+        site.setWorkSiteType(type);
+        WorkSite saved = workSiteService.save(site);
+
         assertNotNull(saved.getId());
-        assertEquals("Sitio Prueba", saved.getName());
+        assertEquals("Sitio Prueba 2", saved.getName());
         assertNotNull(saved.getUser());
     }
 }
